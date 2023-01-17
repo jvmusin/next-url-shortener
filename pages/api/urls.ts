@@ -1,4 +1,5 @@
 import type {NextApiRequest, NextApiResponse} from "next";
+import NextCors from 'nextjs-cors';
 
 export type ShortUrl = {
   id: number,
@@ -7,7 +8,14 @@ export type ShortUrl = {
 
 const urls: ShortUrl[] = []
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  await NextCors(req, res, {
+    // Options
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+    origin: '*',
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  });
+
   if (req.method === 'POST') {
     const {url} = req.body
     const id = urls.length
