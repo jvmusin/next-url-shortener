@@ -9,16 +9,14 @@ type Params = {
 }
 
 type ResponseBody = {
-  data: {
-    urls: ShortUrl[]
-  }
+  urls: ShortUrl[]
 }
 
 async function fetchUrl(id: Number) {
   const result = await fetch(`${getBaseUrl()}/api/urls`,
     {cache: 'no-store'}
   )
-  const {data: {urls}}: ResponseBody = await result.json()
+  const {urls}: ResponseBody = await result.json()
   return urls.find(u => u.id === Number(id))
 }
 
