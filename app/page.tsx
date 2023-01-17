@@ -61,7 +61,7 @@ export default function Page() {
         </form>
         <div
           onClick={handleCopy}
-          className="h-36 group bg-zinc-50 w-full border border-dashed border-zinc-300 hover:border-zinc-400 hover:bg-zinc-100 hover:cursor-pointer rounded-lg flex flex-col justify-center items-center text-xl hover:border-2"
+          className="h-36 group bg-zinc-50 w-full border border-dashed border-zinc-300 hover:border-zinc-400 hover:bg-zinc-100 hover:cursor-pointer rounded-lg flex flex-col justify-center items-center text-xl hover:border-2 space-y-8"
         >
           {
             copied
@@ -74,7 +74,7 @@ export default function Page() {
                       ? 'Copied!'
                       : (urlToRedirect ?? (postUrl.isMutating ? "..." : "Shortened link will be here"))}
                 </p>
-                <p className={`text-sm text-gray-400 mt-6 group-hover:underline ${!urlToRedirect && 'opacity-0'}`}>
+                <p className={`text-sm text-gray-400 group-hover:underline ${!urlToRedirect && 'hidden'}`}>
                   Click to copy
                 </p>
               </>
