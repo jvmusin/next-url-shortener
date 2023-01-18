@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import NextCors from 'nextjs-cors'
-import { urls } from '@/pages/api/urls'
+import { fetchUrls } from '@/utils/use-fetch'
 
 export default async function handler(
   req: NextApiRequest,
@@ -14,7 +14,8 @@ export default async function handler(
   })
 
   const id = Number(req.query.id)
+  const urls = await fetchUrls()
   const result = urls.find(u => u.id === id)
   if (!result) res.status(404).end()
-  else res.json({ url: result.url })
+  else res.json(result.url)
 }

@@ -6,7 +6,7 @@ export type ShortUrl = {
   url: string
 }
 
-export const urls: ShortUrl[] = []
+const urls: ShortUrl[] = []
 
 export default async function handler(
   req: NextApiRequest,
@@ -21,10 +21,12 @@ export default async function handler(
 
   if (req.method === 'POST') {
     const { url } = req.body
-    const obj = {url, id: -1}
+    const obj = { url, id: -1 }
     urls.push(obj)
     const id = urls.indexOf(obj)
     urls[id].id = id
-    res.status(201).json(urls[id])
+    res.status(201).json(id)
+  } else if (req.method === 'GET') {
+    res.json(urls)
   }
 }

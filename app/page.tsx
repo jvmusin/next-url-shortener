@@ -8,15 +8,14 @@ export default function Page() {
   const [url, setUrl] = useState('https://the-link-you-want-to-shorten.long')
   const postUrl = usePostUrlMutation()
 
-  const urlToRedirect = postUrl.data
-    ? `${window.location.origin}/${postUrl.data.id}`
-    : null
+  const urlToRedirect =
+    postUrl.id != null ? `${window.location.origin}/${postUrl.id}` : null
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async event => {
     event.preventDefault()
     postUrl.reset()
-    const response = await postUrl.trigger({ url })
-    console.log(`The new id is`, response.id)
+    const newId = await postUrl.trigger({ url })
+    console.log(`The new id is`, newId)
   }
 
   const [copied, setCopied] = useState(false)
