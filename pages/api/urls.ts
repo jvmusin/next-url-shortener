@@ -21,8 +21,9 @@ export default async function handler(
 
   if (req.method === 'POST') {
     const { url } = req.body
-    urls.push({ url, id: -1 })
-    const id = urls.indexOf(url)
+    const obj = {url, id: -1}
+    urls.push(obj)
+    const id = urls.indexOf(obj)
     urls[id].id = id
     res.status(201).json(urls[id])
   }
