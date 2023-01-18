@@ -1,8 +1,12 @@
-'use client';
+'use client'
 
-import {useEffect} from "react";
+import { useEffect } from 'react'
 
-export default function Redirector({url}: { url: string }) {
+type RedirectorProps = {
+  url: string
+}
+
+export default function Redirector({ url }: RedirectorProps) {
   useEffect(() => {
     setTimeout(() => window.location.replace(url), 3000)
   }, [url])
