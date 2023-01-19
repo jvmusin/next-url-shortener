@@ -35,29 +35,30 @@ export default function MovingPart() {
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit} className='w-full'>
+    <div className='flex w-full flex-col items-center space-y-5'>
+      <form onSubmit={handleSubmit} className='flex w-full flex-col space-y-4'>
         <input
           type='url'
           name='url'
           required
-          className='w-full rounded-lg border border-gray-200 indent-4 leading-[2.75rem]'
+          className='rounded-lg border border-gray-200 indent-4 leading-[2.75rem]'
+          onClick={e => e.currentTarget.select()}
           defaultValue='https://the-link-you-want-to-shorten.long'
         />
 
         <button
           type='submit'
-          className='mt-4 h-12 w-full rounded-lg bg-purple-600 bg-gradient-to-r from-blue-500 to-fuchsia-500 font-bold text-white hover:text-opacity-70'
+          className='h-12 rounded-lg bg-gradient-to-r from-blue-500 to-fuchsia-500 font-bold text-white hover:text-opacity-70'
         >
           Shorten it
         </button>
       </form>
       <div
         onClick={handleCopy}
-        className='group flex h-36 w-full cursor-pointer flex-col items-center justify-center space-y-8 rounded-lg border border-dashed border-zinc-300 bg-zinc-50 text-xl hover:border-2 hover:border-zinc-400 hover:bg-zinc-100'
+        className='group flex h-36 w-full cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed border-zinc-300 bg-zinc-50 text-xl hover:border-2 hover:border-zinc-400 hover:bg-zinc-100'
       >
         {copied ? (
-          <p className='text-center text-4xl font-semibold'>Copied!</p>
+          <p className='text-4xl font-semibold'>Copied!</p>
         ) : (
           <>
             <p>
@@ -67,13 +68,13 @@ export default function MovingPart() {
                   (postUrl.isMutating ? '...' : 'Shortened link will be here')}
             </p>
             {urlToRedirect && (
-              <p className='text-sm text-gray-400 group-hover:underline'>
+              <p className='mt-8 text-sm text-gray-400 group-hover:underline'>
                 Click to copy
               </p>
             )}
           </>
         )}
       </div>
-    </>
+    </div>
   )
 }
