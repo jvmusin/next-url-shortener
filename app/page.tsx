@@ -1,8 +1,8 @@
 'use client'
 
 import { LinkIcon } from '@heroicons/react/24/solid'
-import { usePostUrlMutation } from '@/utils/use-fetch'
 import { FormEventHandler, useEffect, useState } from 'react'
+import { usePostUrlMutation } from '@/utils/use-swr'
 
 export default function Page() {
   const [url, setUrl] = useState('https://the-link-you-want-to-shorten.long')

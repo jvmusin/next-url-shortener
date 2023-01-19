@@ -1,20 +1,18 @@
-'use client'
-
-import { usePostUrlMutation } from '@/utils/use-fetch'
+import { FormEventHandler } from 'react'
+import { postUrl } from '@/utils/urlsFetcherer'
 
 export default function UrlForm() {
-  const postUrl = usePostUrlMutation()
-  const handleSubmit = async event => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async event => {
     event.preventDefault()
+    // @ts-ignore
     const url = event.target.url.value
-    const response = await postUrl.trigger({ url })
-    console.log(`The new id is`, response.id)
+    const newId = await postUrl(url)
+    console.log(`The new id is`, newId)
   }
   return (
     <form onSubmit={handleSubmit} className='w-full'>
       <input
         type='url'
-        id='url'
         name='url'
         required
         className='w-full rounded-lg border border-gray-200 indent-4 leading-[2.75rem]'
