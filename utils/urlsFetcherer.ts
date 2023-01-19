@@ -6,7 +6,7 @@ type PostArgs = {
 }
 
 export const getFetcher = <T>(url: string) =>
-  fetch(url, { cache: 'no-cache' }).then<T>(res => res.json())
+  fetch(url).then<T>(res => res.json())
 export const postFetcher = <T>(url: string, { arg }: PostArgs) =>
   fetch(url, {
     cache: 'no-cache',
