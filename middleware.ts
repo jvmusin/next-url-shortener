@@ -1,6 +1,6 @@
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
-import { fetchUrl } from '@/utils/urlsFetcherer'
+import { fetchUrl } from '@/utils/urlsFetcher'
 
 export async function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.match(/\/\d+/)) {

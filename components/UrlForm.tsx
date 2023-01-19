@@ -1,5 +1,5 @@
 import { FormEventHandler } from 'react'
-import { postUrl } from '@/utils/urlsFetcherer'
+import { postUrl } from '@/utils/urlsFetcher'
 
 export default function UrlForm() {
   const handleSubmit: FormEventHandler<HTMLFormElement> = async event => {

@@ -6,9 +6,7 @@ export type ShortUrl = {
   url: string
 }
 
-const urls: ShortUrl[] = []
-
-console.log('Loading urls.ts')
+const urls: string[] = []
 
 export default async function handler(
   req: NextApiRequest,
@@ -22,15 +20,10 @@ export default async function handler(
   })
 
   if (req.method === 'POST') {
-    console.log('In POST with urls', urls)
     const { url } = req.body
-    const obj = { url, id: -1 }
-    urls.push(obj)
-    const id = urls.indexOf(obj)
-    urls[id].id = id
+    const id = urls.push(url) - 1
     res.status(201).json(id)
   } else if (req.method === 'GET') {
-    console.log('In GET with urls', urls)
-    res.json(urls)
+    res.json(urls.map((url, id) => ({ url, id })))
   }
 }
