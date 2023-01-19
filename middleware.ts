@@ -6,6 +6,6 @@ export async function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.match(/\/\d+/)) {
     const id = Number(request.nextUrl.pathname.substring(1))
     const url = await fetchUrl(id)
-    return NextResponse.redirect(new URL(url!))
+    if (url) return NextResponse.redirect(new URL(url!))
   }
 }
