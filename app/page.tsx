@@ -10,7 +10,7 @@ export default function Page() {
 
   const urlToRedirect =
     postUrl.id != null
-      ? new URL(postUrl.id.toString(), window.location.origin).toString()
+      ? new URL(postUrl.id, window.location.origin).toString()
       : null
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async event => {
