@@ -9,7 +9,9 @@ export default function Page() {
   const postUrl = usePostUrlMutation()
 
   const urlToRedirect =
-    postUrl.id != null ? `${window.location.origin}/${postUrl.id}` : null
+    postUrl.id != null
+      ? new URL(postUrl.id.toString(), window.location.origin).toString()
+      : null
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async event => {
     event.preventDefault()
