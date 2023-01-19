@@ -5,7 +5,6 @@ import { FormEventHandler, useEffect, useState } from 'react'
 import { usePostUrlMutation } from '@/utils/use-swr'
 
 export default function Page() {
-  const [url, setUrl] = useState('https://the-link-you-want-to-shorten.long')
   const postUrl = usePostUrlMutation()
 
   const urlToRedirect =
@@ -16,6 +15,8 @@ export default function Page() {
   const handleSubmit: FormEventHandler<HTMLFormElement> = async event => {
     event.preventDefault()
     postUrl.reset()
+    // @ts-ignore
+    const url = event.target.url.value
     const newId = await postUrl.trigger({ url })
     console.log(`The new id is`, newId)
   }
@@ -43,12 +44,10 @@ export default function Page() {
       <form onSubmit={handleSubmit} className='w-full'>
         <input
           type='url'
-          id='url'
           name='url'
           required
           className='w-full rounded-lg border border-gray-200 indent-4 leading-[2.75rem]'
-          value={url}
-          onChange={e => setUrl(e.target.value)}
+          defaultValue='https://the-link-you-want-to-shorten.long'
         />
 
         <button
