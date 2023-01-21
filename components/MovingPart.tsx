@@ -41,7 +41,7 @@ export default function MovingPart() {
           type='url'
           name='url'
           required
-          className='rounded-lg border border-gray-200 indent-4 leading-[2.75rem]'
+          className='rounded-lg border border-gray-200 indent-4 leading-[2.75rem] bg-transparent border-opacity-40'
           onClick={e => e.currentTarget.select()}
           defaultValue='https://the-link-you-want-to-shorten.long'
         />
@@ -55,7 +55,7 @@ export default function MovingPart() {
       </form>
       <div
         onClick={handleCopy}
-        className='group flex h-36 w-full cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed border-zinc-300 bg-zinc-50 text-xl hover:border-2 hover:border-zinc-400 hover:bg-zinc-100'
+        className='group flex h-36 w-full cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed bg-green-200 bg-opacity-10 text-xl hover:border-2 hover:bg-opacity-20'
       >
         {copied ? (
           <p className='text-4xl font-semibold'>Copied!</p>
@@ -68,7 +68,7 @@ export default function MovingPart() {
                   (postUrl.isMutating ? '...' : 'Shortened link will be here')}
             </p>
             {urlToRedirect && (
-              <p className='mt-8 text-sm text-gray-400 group-hover:underline'>
+              <p className='mt-8 text-sm text-gray-500 group-hover:underline'>
                 Click to copy
               </p>
             )}
